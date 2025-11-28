@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFalando - Blog de Tecnologia</title>
+    
+    <link rel="stylesheet" href="../frontend/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+      
+    </style>
+
+</head>
+
+<body class="by">
+
+    <nav class="navbar navbar-expand-lg shadow-sm ms-auto">
+        <div class="container">
+            <a class="navbar-brand" href="#">TechFalando</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div id="menu" class="">
+                <ul class="navbar-nav ms-auto gap-4">
+                    <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Meus posts</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="btn btn-dark" href="pagina_de_cadastro.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>TechFalando</h1>
+        <p>A <strong>TechFalando</strong> nasceu em 2025 para falar de tecnologia do jeito que você entende: direto, moderno e conectado com o dia a dia.  
+        Aqui você encontra <strong>notícias, análises, reviews e tutoriais</strong> de forma leve e divertida, sem aquele jargão complicado.  
+        Nosso nome diz tudo: <em>conversar sobre tecnologia como quem bate um papo</em>.</p>
+    </section>
+
+    <div class="container my-5">
+        <h2 class="section-title">Por que escolher a TechFalando?</h2>
+
+        <div class="row justify-content-center gap-4">
+
+            <!-- CARD 1 COMPLETO E ORGANIZADO -->
+            <div class="col-md-4">
+                <div class="card tech-card shadow-sm p-3">
+                    <img src="https://pinkfireblog.com.br/wp-content/uploads/2021/07/noticias-em-tempo-real-scaled.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Notícias em Tempo Real</h5>
+                        <p>As novidades do mundo da tecnologia de forma rápida, clara e atualizada.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="col-md-4">
+                <div class="card tech-card shadow-sm p-3">
+                    <img src="data:image/png;base64,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" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Análises e Reviews</h5>
+                        <p>Conteúdo que te ajuda a escolher o melhor produto ou solução digital.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="col-md-4">
+                <div class="card tech-card shadow-sm p-3">
+                    <img src="https://img.freepik.com/vetores-premium/tutoria-online-por-alunos-com-professores-no-conceito-de-ilustracao-de-tela_310941-81.jpg" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">Tutoriais e Guias</h5>
+                        <p>Aprenda segurança digital, IA, hardware e mais sem complicação.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        © 2025
+    </footer>
+
+</body>
+</html>

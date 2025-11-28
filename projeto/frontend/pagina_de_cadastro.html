@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Usuário / Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+    <div class="switch-container">
+        <button id="btn-login" class="switch-btn active">Login</button>
+        <button id="btn-cadastro" class="switch-btn">Cadastro</button>
+    </div>
+
+    <div class="card" id="login-card">
+
+        <h2>Login</h2>
+
+        <form action="../backend/login.php" method="post">
+
+            <div class="input-group">
+                <span class="icon">@</span>
+                <input type="email" name="email" placeholder="Your Email" required>
+            </div>
+
+            <div class="input-group">
+                <span class="icon">🔒</span>
+                <input type="password" name="senha" placeholder="Your Password" required>
+            </div>
+
+            <button type="submit" class="btn">Entrar</button>
+
+
+        </form>
+    </div>
+
+    <div class="card hidden" id="cadastro-card">
+
+        <h2>Cadastro de Usuário</h2>
+
+        <form action="../backend/usuario.php" method="post"  >
+
+            <label>Nome Completo:</label>
+            <input type="text" name="nome" required>
+
+            <label>E-mail:</label>
+            <input type="email" name="email" required>
+
+            <label>Senha:</label>
+            <input type="password" name="senha" required>
+
+            <label>Confirmar Senha:</label>
+            <input type="password" name="confirmar_senha" required>
+
+            <button type="submit" class="btn">Cadastrar</button>
+        </form>
+
+    </div>
+
+    <script>
+// ======== TROCAR ENTRE LOGIN E CADASTRO ========
+const btnLogin = document.getElementById("btn-login");
+const btnCadastro = document.getElementById("btn-cadastro");
+
+const loginCard = document.getElementById("login-card");
+const cadastroCard = document.getElementById("cadastro-card");
+
+btnLogin.addEventListener("click", () => {
+    btnLogin.classList.add("active");
+    btnCadastro.classList.remove("active");
+
+    loginCard.classList.remove("hidden");
+    cadastroCard.classList.add("hidden");
+});
+
+btnCadastro.addEventListener("click", () => {
+    btnCadastro.classList.add("active");
+    btnLogin.classList.remove("active");
+
+    cadastroCard.classList.remove("hidden");
+    loginCard.classList.add("hidden");
+});
+
+
+// =======================================================
+// ================  ENVIO DO LOGIN ======================
+// =======================================================
+
+document.querySelector("#login-card form").addEventListener("submit", function (e) {
+
+    e.preventDefault(); // impedir reload
+
+    let formData = new FormData(this);
+
+    fetch("../backend/login.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(r => r.json())
+    .then(r => {
+
+        if (r.funcionarios === "usuario nao encontrado") {
+            alert("❌ Usuário não encontrado!");
+        } else {
+            alert("✅ Login realizado!");
+            window.location.href = "../frontend/home.html";
+        }
+    })
+    .catch(err => console.log(err));
+});
+
+
+document.querySelector("#cadastro-card form").addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    let formData = new FormData(this);
+
+    let senha = formData.get("senha");
+    let confirmar_senha = formData.get("confirmar_senha");
+
+    if (senha !== confirmar_senha) {
+        alert("❌ As senhas não coincidem!");
+        return;
+    }
+
+    fetch("../backend/usuario.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(r => r.json())
+    .then(r => {
+        alert("✅ Usuário cadastrado com sucesso!");
+        window.location.href = "../frontend/";
+    })
+    .catch(err => console.log(err));
+});
+
+    </script>
+
+</body>
+</html>
